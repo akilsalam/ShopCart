@@ -1,0 +1,58 @@
+      <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="">Admin Page</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      {{#if admin_logged}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin/admin-home">Home <span class="sr-only">(current)</span></a>
+        </li>
+      {{/if}}
+      </ul>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Admin account
+        </button>
+        <div class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuButton">
+          {{#if admin_logged}}
+          <a class="dropdown-item text-light" href="/admin/admin-logout">Admin LogOut</a>
+          {{/if}}
+          <a class="dropdown-item text-light" href="/login">My Account</a>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+    <div class="container">
+        <h1 class="text-center m-4 text-dark">Admin Panel</h1>
+        <h3 class="text-center m-4 text-dark">Log In</h3>
+        <div class="jumbotron bg-dark text-light">
+            <form action="admin/admin-home" id="login" method="POST">
+                {{#if PasswordErr}}
+                <p class="error text-centre">{{PasswordErr}}</p>
+                {{/if}}
+                {{#if UserErr}}
+                <p class="error text-centre">{{UserErr}}</p>
+                {{/if}}
+                <div class="input-div">
+                    <label for="email">Email</label>
+                    <input type="email" class="log-input" name="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="input-div">
+                    <label for="password">Password</label>
+                    <input type="password" class="log-input" name="password" id="password" placeholder="Enter Your Password">
+                </div>
+                <br>
+                <div class="btn-div">
+                <a href="/admin/admin-home"><button type="submit" class="btn btn-success">Submit</button></a>
+                </div>
+            </form>
+        </div>
+    </div>

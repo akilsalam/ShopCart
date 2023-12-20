@@ -1,0 +1,53 @@
+  <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="">Admin Page</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      {{#if admin_logged}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin/admin-home">Home <span class="sr-only">(current)</span></a>
+        </li>
+      {{/if}}
+      </ul>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Admin account
+        </button>
+        <div class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuButton">
+          {{#if admin_logged}}
+          <a class="dropdown-item text-light" href="/admin/admin-logout">Admin LogOut</a>
+          {{/if}}
+          <a class="dropdown-item text-light" href="/login">My Account</a>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<section>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center">Edit User</h2>
+                <form id="signup-form" action="/admin/edit-user/{{selectUser._id}}" method="Post" enctype="application/x-www-form-urlencoded">
+                    <label for="first_name">First Name</label>
+                    <input type="text" name="first_name" class="form-control" value="{{selectUser.first_name}}">
+                    <br>
+                    <label for="last_name">Last Name</label>
+                    <input type="text" name="last_name" class="form-control" value="{{selectUser.last_name}}">
+                    <br>
+                    <label for="email">Email Address</label>
+                    <input type="text" name="email" class="form-control" value="{{selectUser.email}}">
+                    <br>
+                    <button type="submit" class="btn btn-success mt-4">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

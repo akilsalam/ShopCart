@@ -1,0 +1,70 @@
+ <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="">ShopCart</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Account
+        </button>
+        <div class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuButton">
+          {{#if loggedIn}}
+          <a class="dropdown-item text-light" href="/logout">LogOut</a>
+          {{else if signup}}
+          <a class="dropdown-item text-light" href="/login">LogIn</a>
+          {{else}}
+          <a class="dropdown-item text-light" href="/signup">SignUp</a>
+          {{/if}}
+          <div class="dropdown-divider text-dark"></div>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item text-light" href="/admin">Admin Panel</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+    <div class="container">
+        <h1 class="text-center m-4 text-dark">Log In</h1>
+        <div class="jumbotron bg-dark text-light">
+            <form action="/login" id="login" method="POST" >
+            {{#if LoginPasswordErr}}
+            <p>{{LoginPasswordErr}}</p>
+            {{/if}}
+            {{#if LoginUserErr}}
+            <p>{{LoginUserErr}}</p>
+            {{/if}}
+                <div class="input-div">
+                    <label for="email">Email</label>
+                    <input type="email" class="log-input" name="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="input-div">
+                    <label for="password">Password</label>
+                    <input type="password" class="log-input" name="password" id="password" placeholder="Enter Your Password">
+                </div>
+                <br>
+                <div class="btn-div">
+                <a href="/"><button type="submit" class="btn btn-success">Submit</button></a>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <a href="/signup">Create New Account</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
